@@ -3,18 +3,18 @@
 /* Controllers */
 
 
-function HomeController($scope, $rootScope, $cookies) {
+function HomeController($scope, InstagramToken) {
     //get instagram link
-    if($cookies.token){
-        $rootScope.token = $cookies.token;
+    if(InstagramToken()){
+        console.log(InstagramToken())
     }
 }
-HomeController.$inject = ['$scope', '$rootScope', '$cookies'];
+HomeController.$inject = ['$scope', 'InstagramToken'];
 
-function InstagramAuthController($rootScope, $location, $cookies){
+function InstagramAuthController($location, InstagramToken){
     var hash = $location.hash();
-    $cookies.token = $rootScope.token = hash.substr(hash.indexOf('=')+1);
+    InstagramToken(hash.substr(hash.indexOf('=')+1));
     $location.hash('').path('/home');
 }
-InstagramAuthController.$inject = ['$rootScope', '$location', '$cookies'];
+InstagramAuthController.$inject = ['$location', 'InstagramToken'];
 
