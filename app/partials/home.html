@@ -1,2 +1,4 @@
 <a ng-show="!token" ng-href="https://instagram.com/oauth/authorize/?client_id=72ddd00a25e24c8a99d07a29289e7bec&redirect_uri=http://localhost:5000/instagram&response_type=token">Authorize to Instagram</a>
-{{position}}
+<div class="image">
+    <instagram-image ng-repeat="image in images" data-image="image"></instagram-image>
+</div>
