@@ -3,12 +3,18 @@
 /* Controllers */
 
 
-function HomeController($scope) {
-    //http://flickr.com/services/auth/?api_key=[api_key]&perms=[perms]&api_sig=[api_sig]
-    $scope.auth = {
-        api_key: '2d7a4c8d1bd92eecc2b914e433d7e2c1',
-        perms: 'read'
+function HomeController($scope, $rootScope, $cookies) {
+    //get instagram link
+    if($cookies.token){
+        $rootScope.token = $cookies.token;
     }
 }
-HomeController.$inject = ['$scope'];
+HomeController.$inject = ['$scope', '$rootScope', '$cookies'];
+
+function InstagramAuthController($rootScope, $location, $cookies){
+    var hash = $location.hash();
+    $cookies.token = $rootScope.token = hash.substr(hash.indexOf('=')+1);
+    $location.hash('').path('/home');
+}
+InstagramAuthController.$inject = ['$rootScope', '$location', '$cookies'];
 
