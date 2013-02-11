@@ -30,7 +30,7 @@ function HomeController($scope, $http, InstagramToken, instagram_search_url) {
             );
         }
         else {
-            alert("Geolocation is not supported by this browser");
+            
         }
     };
     geolocate();
