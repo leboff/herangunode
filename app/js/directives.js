@@ -15,7 +15,7 @@ angular.module('myApp.directives', []).
                '<img class="lowres" ng-src="{{image.images.low_resolution.url}}"> '+
                '<div class="modal">'+
                    '<div class="section"><img class="highres" ng-src="{{image.images.standard_resolution.url}}">' +
-                       '<h2><span>User: {{image.user.full_name}} <br/>{{image.caption.text}}<br/>{{image.location.name}}</span></h2>' +
+                       '<h2><span>User: {{image.user.full_name}} <br/>{{image.created_time | unixTimeFilter | date}}<br/>{{image.caption.text}}<br/>{{image.location.name}}</span></h2>' +
                    '</div>'+
                '</div>',
             restrict: 'E',

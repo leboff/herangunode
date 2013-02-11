@@ -7,4 +7,9 @@ angular.module('myApp.filters', []).
     return function(text) {
       return String(text).replace(/\%VERSION\%/mg, version);
     }
-  }])
+  }]).
+    filter('unixTimeFilter', function(){
+        return function(time){
+            return new Date(time * 1000);
+        }
+    });

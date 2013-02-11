@@ -37,6 +37,7 @@ function HomeController($scope, $http, InstagramToken, instagram_search_url) {
 
     //grab the images and process them
     var successCallback = function(resp, status, headers, config){
+        console.log(resp);
         $scope.images = resp.data;
     };
     var searchImages = function(position){
@@ -46,7 +47,8 @@ function HomeController($scope, $http, InstagramToken, instagram_search_url) {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,
                 access_token: InstagramToken(),
-                callback: 'JSON_CALLBACK'
+                callback: 'JSON_CALLBACK',
+                count: 50
             }
         };
         $http.jsonp(instagram_search_url, config).success(successCallback);
